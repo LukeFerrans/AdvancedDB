@@ -17,13 +17,50 @@
   integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
   crossorigin="anonymous"
 />
+<link href="css/album.css" rel="stylesheet" />
 
 </head>
 <body>
 <%- include('common/header'); -%>
 
-<h1>Home</h1>  
+<div class="container">
+  <h2 class="text-center">Information Asset Register Login</h2>
 
-<%- include('common/footer'); -%>
+  <br />
+  <center><p>If you do not have a user account, please register here: <a class="link" href="Account">Register Account</a></p></center>
+  <br />
+
+  <div class="row justify-content-md-center">
+    <div class="col-">
+      <form method="POST" action="/login">
+        <div class="form-group">
+          <label for="name">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="Enter Email"
+          />
+
+<!-- add error handling -->
+
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="password" />
+          
+
+<!-- add error handling -->
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+
+
+
 </body>
 </html>
+
+

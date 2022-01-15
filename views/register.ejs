@@ -24,6 +24,12 @@
 
 <h1>Asset Register</h1>  
 
+<ul>
+  <% registers.forEach(function(register){ %>
+                <li><%=  register.name  %></li>
+  <% }); %>
+</ul>
+
 <%- include('common/footer'); -%>
 </body>
 </html>

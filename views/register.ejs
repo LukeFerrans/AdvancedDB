@@ -19,17 +19,48 @@
 />
 
 </head>
+
 <body>
 <%- include('common/header'); -%>
 
-<h1>Asset Register</h1>  
+<center><h1 , class="mx-auto"> Information Asset Register </h1></center>
 
-<ul>
-  <% registers.forEach(function(register){ %>
-                <li><%=  register.name  %></li>
-  <% }); %>
-</ul>
+  <br />     
+  <center><button type="button" class="btn btn-primary">Create a register entry</button></center>
+  <br />
 
-<%- include('common/footer'); -%>
+<div>
+<table class="table table-striped custab">
+  <thead>
+      <tr>
+          <th>Directorate</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Purpose</th>
+          <th>Sensitivity</th>
+
+          <%  
+        
+          registers.forEach(register => {
+            
+        %>
+
+            <tr>
+                <td><%=  register.Directorate  %></td>
+                <td><%=  register.Name  %></td>
+                <td><%=  register.Description  %></td>
+                <td><%=  register.Purpose  %></td>
+                <td><%=  register.Sensitivity  %></td>
+                <!-- <td class="text-center"><a class='btn btn-info btn-xs'><span class="glyphicon glyphicon-edit"></span> Edit</a>  -->
+                <!-- <a  href="/tastings/delete/<%= taste.id %>" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td> -->
+            </tr>
+ 
+         <%  
+          });
+         %>
+        </table>
+      </div>
+      <div class="row col-md-12 col-md-offset-2 custyle mx-auto">
+
 </body>
 </html>

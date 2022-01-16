@@ -3,9 +3,9 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const chalk = require("chalk");
-const expressSession = require("express-session");
 
-const registerController = require("./controllers/registers");
+
+const RegisterController = require("./controllers/Register");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -23,24 +23,16 @@ mongoose.connection.on("error", (err) => {
 });
 
 app.use(express.static(path.join(__dirname, "public")));
-//app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(expressSession({ secret: 'foo barr', cookie: { expires: new Date(253402300000000) } }))
 
 require("dotenv").config();
-//console.log(process.env.PORT)
+console.log(process.env.PORT)
 
 app.get("/home", (req, res) => {
   res.render("home");
 });
 
-app.get("/register", registerController.list);
-app.get("/register/delete/:id", registerController.delete);
-
-// app.get("/register", (req, res) => {
-//   res.render("register");
-// });
+app.get("/register", RegisterController.list);
 
 app.get("/search", (req, res) => {
   res.render("search");

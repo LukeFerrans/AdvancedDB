@@ -1,25 +1,13 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const registerSchema = new Schema(
+const RegisterSchema = new Schema(
   {
-    description: String,
-    directorate: String,
-    name: String,
-    purpose: String,
-    sensitivity: String,
+    Description: String,
+    Directorate: String,
+    Name: { type: String },
+    Purpose: String,
+    Sensitivity: String,
+});
 
-    directorate_id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Directorate",
-    },
-    sensitivity_id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Sensitivity",
-    },
-    
-  },
-  { timestamps: true }
-);
-
-module.exports = mongoose.model("Register", registerSchema);
+module.exports = mongoose.model('Register', RegisterSchema);

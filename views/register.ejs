@@ -26,7 +26,7 @@
 <center><h1 , class="mx-auto"> Information Asset Register </h1></center>
 
   <br />     
-  <center><button type="button" class="btn btn-primary">Create a register entry</button></center>
+  <center> <a role="button" class="btn btn-primary btn-xs" href="/create">Create Register Entry</a></center>
   <br />
 
 </div>
@@ -38,7 +38,9 @@
           <th>Directorate</th>
           <th>Name</th>
           <th>Description</th>
+          <th>Purpose</th>
           <th>Sensitivity</th>
+
 
       </tr>
 
@@ -51,9 +53,11 @@
               <td><%=  entry.Directorate  %></td>
               <td><%=  entry.Name  %></td>
               <td><%=  entry.Description  %></td>
+              <td><%=  entry.Purpose  %></td>
               <td><%=  entry.Sensitivity  %></td>
               
-              <td class="text-center"><a class='btn btn-info btn-xs'><span class="glyphicon glyphicon-edit"></span> Edit</a> 
+              <td class="text-center"><a class='btn btn-info btn-xs' href="/register/edit/<%= entry.id %>" ><span class="glyphicon glyphicon-edit"></span> Edit</a> 
+              <a  href="/register/delete/<%= entry.id %>" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
                
           </tr>
           

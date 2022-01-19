@@ -43,13 +43,17 @@
             placeholder="Enter Email"
           />
 
-<!-- add error handling -->
+          <% if (errors['email']) { %>
+            <p style="color: red"><%= errors['email'].message %></p>
+            <% } %>
 
         </div>
         <div class="form-group">
           <label for="password">Password</label>
           <input type="password" class="form-control" name="password" />
-          
+          <% if (errors['password']) { %>
+            <p style="color: red"><%= errors['password'].message %></p>
+            <% } %>
 
 <!-- add error handling -->
 

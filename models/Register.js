@@ -8,6 +8,17 @@ const RegisterSchema = new Schema(
     Name: { type: String },
     Purpose: String,
     Sensitivity: String,
+
+
+    directorate_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Directorate",
+    },
+    sensitivity_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Sensitivity",
+    },
+
 });
 
 module.exports = mongoose.model('Register', RegisterSchema);

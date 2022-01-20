@@ -28,6 +28,7 @@
     
     <body>
       <%- include('common/header'); -%>
+
       <div class="container">
         <h1 class="text-center">Edit Register Entry</h1>
         <div class="row justify-content-md-center">
@@ -38,6 +39,7 @@
               <div class="form-group">
                 <label for="name">Directorate</label>
                 <input
+                  value="<%= Entries.Directorate %>"
                   type="text"
                   class="form-control"
                   id="Directorate"
@@ -48,6 +50,7 @@
               <div class="form-group">
                 <label for="name">System Name</label>
                 <input
+                  value="<%= Entries.Name %>"
                   type="text"
                   class="form-control"
                   id="Name"
@@ -58,6 +61,7 @@
               <div class="form-group">
                 <label for="name">System Description</label>
                 <input
+                  value="<%= Entries.Description %>"
                   type="text"
                   class="form-control"
                   id="Description"
@@ -68,6 +72,7 @@
               <div class="form-group">
                 <label for="name">System Purpose</label>
                 <input
+                  value="<%= Entries.Purpose %>"
                   type="text"
                   class="form-control"
                   id="Purpose"
@@ -78,6 +83,7 @@
               <div class="form-group">
                 <label for="name">Sensitivity</label>
                 <input
+                  value="<%= Entries.Sensitivity %>"
                   type="text"
                   class="form-control"
                   id="Sensitivity"

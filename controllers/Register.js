@@ -49,11 +49,11 @@ exports.create = async (req, res) => {
 exports.update = async (req, res) => {
   const id = req.params.id;
   try {
-    const Register = await Register.updateOne({ _id: id }, req.body);
-    res.redirect('/register/?message=taster has been updated');
+    const Entries = await Register.updateOne({ _id: id }, req.body);
+    res.redirect('/register/?message=entry has been updated');
   } catch (e) {
     res.status(404).send({
-      message: `could find register ${id}.`,
+      message: `Cannot find register entry: ${id}.`,
     });
   }
 };

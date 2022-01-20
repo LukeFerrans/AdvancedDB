@@ -6,7 +6,7 @@ const chalk = require("chalk");
 const bodyParser = require("body-parser");
 const expressSession = require("express-session");
 const User = require("./models/User.js");
-
+const searchApiController = require("./controllers/api/search");
 
 const RegisterController = require("./controllers/Register");
 const UserController = require("./controllers/User");
@@ -49,19 +49,13 @@ const authMiddleware = async (req, res, next) => {
   next()
 }
 
-app.get("/logout", async (req, res) => {
-  req.session.destroy();
-  global.user = false;
-  res.redirect('/');
-})
-
 app.get("/create", authMiddleware, (req, res) => {
   res.render("create", { errors: {} });
 });
 
 app.post("/create", RegisterController.create);
 
-app.get("/register", RegisterController.list);
+app.get("/register", authMiddleware, RegisterController.list);
 app.get("/register/delete/:id", RegisterController.delete);
 app.get("/register/edit/:id", RegisterController.edit);
 app.post("/register/edit/:id", RegisterController.update);
@@ -69,19 +63,24 @@ app.post("/register/edit/:id", RegisterController.update);
 require("dotenv").config();
 console.log(process.env.PORT)
 
-app.get("/search", (req, res) => {
-  res.render("search");
+app.get("/search",(req,res) => {
+  res.render('search', searchApiController);
 });
+app.get("/api/search", searchApiController.list);
 
 
 app.get("/account", (req, res) => {res.render("account");});
-
 app.post("/account", UserController.create);
 app.get("/home", (req, res) => {
   res.render('home', { errors: {} })
 });
 
 app.post("/login", UserController.login);
+app.get("/logout", async (req, res) => {
+  req.session.destroy();
+  global.user = false;
+  res.redirect('/home');
+})
 
 app.listen(PORT, () => {
   console.log(

@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const DirectorateSchema = new Schema(
   {
-    name: { type: String, required: [true, 'Name is required'] },
+    Directorate: String,
 });
 
 module.exports = mongoose.model('Directorate', DirectorateSchema);

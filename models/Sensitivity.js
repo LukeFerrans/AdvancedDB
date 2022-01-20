@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const SensitivitySchema = new Schema(
   {
-    name: { type: String, required: [true, 'Name is required'] },
+    Sensitivity: String,
 });
 
 module.exports = mongoose.model('Sensitivity', SensitivitySchema);

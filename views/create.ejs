@@ -30,6 +30,7 @@
       <%- include('common/header'); -%>
       <div class="container">
         <h1 class="text-center">Create Register Entry</h1>
+        <br>
         <div class="row justify-content-md-center">
           <div class="col-">
             <form method="POST" action="/create">
@@ -40,11 +41,8 @@
                   class="form-control"
                   id="Directorate"
                   name="Directorate"
-                  placeholder="Enter Directorate"
                 />
-                <% if (errors['name']) { %>
-                  <p style="color: red"><%= errors['name'].message %></p>
-                  <% } %>
+
 
               <div class="form-group">
                 <label for="name">System Name</label>
@@ -53,12 +51,9 @@
                   class="form-control"
                   id="Name"
                   name="Name"
-                  placeholder="Enter Name"
                 />
 
-                <% if (errors['name']) { %>
-                <p style="color: red"><%= errors['name'].message %></p>
-                <% } %>
+
               </div>
 
 
@@ -70,9 +65,7 @@
                   id="Description"
                   name="Description"
                 />
-                <% if (errors['twitter']) { %>
-                <p style="color: red"><%= errors['twitter'].message %></p>
-                <% } %>
+
               </div>
 
               <div class="form-group">
@@ -83,9 +76,7 @@
                   id="Purpose"
                   name="Purpose"
                 />
-                <% if (errors['twitter']) { %>
-                <p style="color: red"><%= errors['twitter'].message %></p>
-                <% } %>
+
               </div>    
 
               <div class="form-group">
@@ -96,9 +87,7 @@
                   id="Sensitivity"
                   name="Sensitivity"
                 />
-                <% if (errors['twitter']) { %>
-                <p style="color: red"><%= errors['twitter'].message %></p>
-                <% } %>
+
               </div>  
 
               <button type="submit" class="btn btn-primary">Submit</button>
@@ -106,7 +95,6 @@
           </div>
         </div>
       </div>
-      <%- include('common/footer'); -%>
     </body>
   </html>
 </html>

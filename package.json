@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "engines": {
+    "npm": "8.x",
     "node": "14.x"
   },
   "scripts": {
@@ -17,6 +18,7 @@
     "@heroku/buildpack-registry": "^1.0.1",
     "async-file": "^2.0.2",
     "bcrypt": "^5.0.1",
+    "bcrypt-nodejs": "^0.0.3",
     "cli-ux": "^6.0.8",
     "dotenv": "^12.0.4",
     "ejs": "^3.1.6",

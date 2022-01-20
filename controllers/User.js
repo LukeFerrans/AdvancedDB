@@ -5,7 +5,7 @@ exports.login = async (req, res) => {
     try {
         const user = await User.findOne({ email: req.body.email });
         if (!user) {
-            res.render('home', { errors: { email: { message: 'email not found' } } })
+            res.render('index', { errors: { email: { message: 'email not found' } } })
             return;
         }
 
@@ -13,11 +13,11 @@ exports.login = async (req, res) => {
         if (match) {
             req.session.userID = user._id;
             console.log(req.session.userID);
-            res.redirect('/register');
+            res.redirect('');
             return
         }
 
-        res.render('home', { errors: { password: { message: 'password does not match' } } })
+        res.render('index', { errors: { password: { message: 'password does not match' } } })
 
 
     } catch (e) {
@@ -36,7 +36,7 @@ exports.create = async (req, res) => {
     } catch (e) {
         if (e.errors) {
             console.log(e.errors);
-            res.render('account', { errors: e.errors })
+            res.render('create-user', { errors: e.errors })
             return;
         }
         return res.status(400).send({

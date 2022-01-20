@@ -26,7 +26,7 @@ mongoose.connection.on("error", (err) => {
   process.exit();
 });
 
-app.use(express.static(path.join(__dirname, "home")));
+app.use(express.static(path.join(__dirname, "index")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -44,7 +44,7 @@ app.use("*", async (req, res, next) => {
 const authMiddleware = async (req, res, next) => {
   const user = await User.findById(req.session.userID);
   if (!user) {
-    return res.redirect('/home');
+    return res.redirect('/index');
   }
   next()
 }
@@ -69,17 +69,22 @@ app.get("/search",(req,res) => {
 app.get("/api/search", searchApiController.list);
 
 
-app.get("/account", (req, res) => {res.render("account");});
-app.post("/account", UserController.create);
-app.get("/home", (req, res) => {
-  res.render('home', { errors: {} })
+app.get("/join", (req, res) => {
+  res.render('create-user', { errors: {} })
+});
+
+app.post("/join", UserController.create);
+
+
+app.get("/index", (req, res) => {
+  res.render('index', { errors: {} })
 });
 
 app.post("/login", UserController.login);
 app.get("/logout", async (req, res) => {
   req.session.destroy();
   global.user = false;
-  res.redirect('/home');
+  res.redirect('/index');
 })
 
 app.listen(PORT, () => {

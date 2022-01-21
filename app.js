@@ -82,6 +82,7 @@ app.get("/index", (req, res) => {
   res.render('index', { errors: {} })
 });
 
+app.post("/join", UserController.create);
 app.post("/login", UserController.login);
 
 app.get("/logout", async (req, res) => {

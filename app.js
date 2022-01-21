@@ -26,11 +26,12 @@ mongoose.connection.on("error", (err) => {
   process.exit();
 });
 
-app.use(express.static(path.join(__dirname, "index")));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(expressSession({ secret: 'foo barr', cookie: { expires: new Date(253402300000000) } }))
+app.use('/scripts', express.static(__dirname + '../public/scripts'))
 
 app.use("*", async (req, res, next) => {
   global.user = false;
@@ -44,10 +45,11 @@ app.use("*", async (req, res, next) => {
 const authMiddleware = async (req, res, next) => {
   const user = await User.findById(req.session.userID);
   if (!user) {
-    return res.redirect('/index');
+    return res.redirect('/');
   }
   next()
 }
+
 
 app.get("/create", authMiddleware, (req, res) => {
   res.render("create", { errors: {} });
@@ -73,7 +75,7 @@ app.get("/join", (req, res) => {
   res.render('create-user', { errors: {} })
 });
 
-app.post("/join", UserController.create);
+app.post("/account", UserController.create);
 
 
 app.get("/index", (req, res) => {
@@ -81,10 +83,11 @@ app.get("/index", (req, res) => {
 });
 
 app.post("/login", UserController.login);
+
 app.get("/logout", async (req, res) => {
   req.session.destroy();
   global.user = false;
-  res.redirect('/index');
+  res.redirect('index');
 })
 
 app.listen(PORT, () => {

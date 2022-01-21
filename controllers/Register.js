@@ -7,7 +7,7 @@ exports.list = async (req, res) => {
     const Entries = await Register.find({});
     res.render("register", {Entries: Entries});
   } catch (e) {
-    res.status(404).send({ message: "could not list register entries" });
+    res.status(404).send({ message: "Unable to list register entries" });
   }
 };
 
@@ -18,7 +18,7 @@ exports.edit = async (req, res) => {
     res.render('edit', { Entries: Entries, id: id });
   } catch (e) {
     res.status(404).send({
-      message: `Cannot find register entry: ${id}.`,
+      message: `Cannot find register entry (edit): ${id}.`,
     });
   }
 };
@@ -33,7 +33,7 @@ exports.create = async (req, res) => {
       Sensitivity: req.body.Sensitivity 
     });
     await register.save();
-    res.redirect('/register/?message=Register entry has been created')
+    res.redirect('index/?message=Register entry has been created')
   } catch (e) {
     if (e.errors) {
       console.log(e.errors);
@@ -49,11 +49,11 @@ exports.create = async (req, res) => {
 exports.update = async (req, res) => {
   const id = req.params.id;
   try {
-    const Register = await Register.updateOne({ _id: id }, req.body);
+    const register = await Register.updateOne({ _id: id }, req.body);
     res.redirect('/register/?message=taster has been updated');
   } catch (e) {
     res.status(404).send({
-      message: `could find register ${id}.`,
+      message: `Cannot find register entry (update) ${id}.`,
     });
   }
 };

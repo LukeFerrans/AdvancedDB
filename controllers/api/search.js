@@ -16,7 +16,7 @@ exports.list =  async (req,res) => {
         } catch (error) {
         console.log(error);
         res.status(404).send({
-            message: `could not perform search`,
+            message: `unable to perform search`,
         });
     }
 }
